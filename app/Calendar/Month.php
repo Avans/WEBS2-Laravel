@@ -80,4 +80,9 @@ class Month
         return $day < $this->calculateTotalDays();
     }
 
+    public function makeDay($day) : MonthDay
+    {
+        return new MonthDay($day, $this);
+    }
+
 }

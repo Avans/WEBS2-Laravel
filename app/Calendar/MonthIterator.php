@@ -12,19 +12,9 @@ class MonthIterator implements \Iterator {
         $this->rewind();
     }
 
-    public function current()
+    public function current() : MonthDay
     {
-        if ($this->month->beforeStartOfMonth($this->day)) {
-            return 'empty';
-        } elseif ($this->month->beyondEndOfMonth($this->day)) {
-            return 'empty';
-        } else {
-            return [
-                'weekday' => $this->month->calculateWeekday($this->day),
-                'monthday' =>  $this->month->calculateMonthDay($this->day),
-                'events' => $this->month->events($this->day)
-            ];
-        }
+        return $this->month->makeDay($this->day);
     }
 
     public function next()

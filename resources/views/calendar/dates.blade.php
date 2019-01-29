@@ -6,10 +6,11 @@
         @endforeach
     </tr>
     <tr>
-        @foreach ($calendar->dates() as $curdate)
-            @if ($curdate == 'empty')
+        @foreach ($calendar->dates() as $date)
+            @if ($date->isEmpty())
                 @include('calendar.emptyday')
             @else
+                @php ($curdate = $date->data())
                 @if ($curdate['weekday'] == 0)
     </tr><tr>
                 @endif
