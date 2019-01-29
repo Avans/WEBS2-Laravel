@@ -21,9 +21,13 @@ class Month
         return array_search($this->date->format("D"), $this->days);
     }
 
-    public function beyondEndOfMonth($day_count)
+    public function beforeStartOfMonth($day)
     {
-        return $day_count > $this->date->format("t");
+        return $day < $this->calculateOffsetAtStart($this->days);
+    }
+    public function beyondEndOfMonth($day)
+    {
+        return $day > $this->date->format("t");
     }
 
     public function formatLabel()
@@ -64,4 +68,10 @@ class Month
     {
         return round(($this->calculateOffsetAtStart($this->days) + $this->date->format("t")) / count($this->days));
     }
+
+    public function calculateMonthDay($day)
+    {
+        return $day - $this->calculateOffsetAtStart($this->days) + 1;
+    }
+
 }
