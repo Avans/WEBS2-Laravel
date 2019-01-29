@@ -32,6 +32,6 @@ class Calendar
     }
 
     public function dates() {
-        return new Dates($this->month, $this->days);
+        return new Dates($this->month);
     }
 }
