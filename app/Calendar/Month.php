@@ -92,11 +92,6 @@ class Month
         return $day - $this->calculateOffsetAtStart($this->days) + 1;
     }
 
-    public function isMonthDay($day)
-    {
-        return $day < $this->calculateTotalDays();
-    }
-
     public function makeDay($day) : MonthDay
     {
         return new MonthDay($day, $this);

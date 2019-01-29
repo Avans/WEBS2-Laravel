@@ -29,7 +29,7 @@ class MonthIterator implements \Iterator {
 
     public function valid()
     {
-        return $this->month->isMonthDay($this->day);
+        return $this->day < $this->calculateTotalDays();
     }
 
     public function rewind()
