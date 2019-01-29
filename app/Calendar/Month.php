@@ -7,10 +7,13 @@ namespace App\Calendar;
 class Month
 {
     private $date;
+    private $days;
 
-    public function __construct(\DateTime $date)
+
+    public function __construct(\DateTime $date, array $days)
     {
         $this->date = clone $date;
+        $this->days = $days;
     }
 
     public function calculateNumberOfWeeks($days)
@@ -35,7 +38,7 @@ class Month
 
     public function next()
     {
-        return new self($this->date->add(new \DateInterval('P1M')));
+        return new self($this->date->add(new \DateInterval('P1M')), $this->days);
     }
 
     public function getID()
@@ -50,5 +53,10 @@ class Month
             ->whereDate('end', '=', $this->date->format("Y-m-$day_count"))
             ->orWhereRaw('? BETWEEN start AND end', [$this->date->format("Y-m-$day_count")])
             ->get();
+    }
+
+    public function calculateWeekday($day)
+    {
+        return $day % count($this->days);
     }
 }
