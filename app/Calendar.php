@@ -12,7 +12,7 @@ class Calendar
 
     public function __construct(\DateTime $date, $days)
     {
-        $this->month = new Month($date, $days);
+        $this->month = new Month($date);
         $this->days = $days;
     }
 

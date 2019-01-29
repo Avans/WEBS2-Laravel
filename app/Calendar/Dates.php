@@ -4,15 +4,18 @@ namespace App\Calendar;
 class Dates implements \Iterator {
 
     private $month;
+    private $days;
 
     private $offsetAtStart;
 
-    private $day;
+    private $currentEntry;
     private $totalEntries;
 
     public function __construct(Month $month, $days)
     {
         $this->month = $month;
+        $this->days = $days;
+
         $this->offsetAtStart = $month->calculateOffsetAtStart($days);
         $this->rewind();
         $this->totalEntries = (count($days) * $month->calculateNumberOfWeeks($days));
@@ -26,16 +29,26 @@ class Dates implements \Iterator {
      */
     public function current()
     {
-        $monthDay = $this->day - $this->offsetAtStart + 1;
-        if ($this->day < $this->offsetAtStart) {
+        $day_count = $this->currentEntry - $this->offsetAtStart + 1;
+        if ($this->currentEntry < $this->offsetAtStart) {
             return 'empty';
-        } elseif ($this->month->beyondEndOfMonth($monthDay)) {
+        } elseif ($this->month->beyondEndOfMonth($day_count)) {
             return 'empty';
         } else {
             return [
-                'weekday' => $this->month->calculateWeekday($this->day),
-                'monthday' =>  $monthDay,
-                'events' => $this->month->events($monthDay)
+                'weekday' => $this->currentEntry % count($this->days),
+                'weekday_class' => call_user_func(function($dayName){
+                    switch ($dayName) {
+                        case "Sat":
+                            return "saturday_entry";
+                        case "Sun":
+                            return "sunday_entry";
+                        default:
+                            return "";
+                    }
+                }, $this->days[$this->currentEntry % count($this->days)]),
+                'monthday' =>  $day_count,
+                'events' => $this->month->events($day_count)
             ];
         }
     }
@@ -48,7 +61,7 @@ class Dates implements \Iterator {
      */
     public function next()
     {
-        $this->day++;
+        $this->currentEntry++;
     }
 
     /**
@@ -59,12 +72,12 @@ class Dates implements \Iterator {
      */
     public function key()
     {
-        return $this->day;
+        return $this->currentEntry;
     }
 
     public function valid()
     {
-        return $this->day < $this->totalEntries;
+        return $this->currentEntry < $this->totalEntries;
     }
 
     /**
@@ -75,6 +88,6 @@ class Dates implements \Iterator {
      */
     public function rewind()
     {
-        $this->day = 0;
+        $this->currentEntry = 0;
     }
 }
