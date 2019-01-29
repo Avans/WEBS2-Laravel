@@ -27,7 +27,7 @@ class Month
     }
     public function beyondEndOfMonth($day)
     {
-        return $this->calculateMonthDay($day) > $this->date->format("t");
+        return $day > $this->date->format("t");
     }
 
     public function formatLabel()
@@ -45,13 +45,12 @@ class Month
         return $this->date->format("Y-n");
     }
 
-    public function events($day)
+    public function events($day_count)
     {
-        $date = $this->date->format("Y-m-") . $this->calculateMonthDay($day);
         return \App\Event::query()
-            ->whereDate('start', '=', $date)
-            ->whereDate('end', '=', $date)
-            ->orWhereRaw('? BETWEEN start AND end', [$date])
+            ->whereDate('start', '=', $this->date->format("Y-m-$day_count"))
+            ->whereDate('end', '=', $this->date->format("Y-m-$day_count"))
+            ->orWhereRaw('? BETWEEN start AND end', [$this->date->format("Y-m-$day_count")])
             ->get();
     }
 
@@ -73,11 +72,6 @@ class Month
     public function calculateMonthDay($day)
     {
         return $day - $this->calculateOffsetAtStart($this->days) + 1;
-    }
-
-    public function isMonthDay($day)
-    {
-        return $day < $this->calculateTotalDays();
     }
 
 }
