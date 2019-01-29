@@ -60,8 +60,8 @@ class Month
         return (count($this->days) * $this->calculateNumberOfWeeks());
     }
 
-    private function calculateNumberOfWeeks($days)
+    private function calculateNumberOfWeeks()
     {
-        return round(($this->calculateOffsetAtStart($days) + $this->date->format("t")) / count($days));
+        return round(($this->calculateOffsetAtStart($this->days) + $this->date->format("t")) / count($this->days));
     }
 }
