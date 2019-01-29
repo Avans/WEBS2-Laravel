@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b63456b-c455-43ae-8cbc-ceed14d1c278" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Calendar/Dates.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Calendar/Dates.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Calendar/Month.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Calendar/Month.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Calendar.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +52,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Calendar.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="422">
@@ -65,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Calendar/Dates.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+            <state relative-caret-position="60">
+              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -77,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Calendar/Month.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+            <state relative-caret-position="422">
+              <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -130,9 +129,9 @@
         <option value="$PROJECT_DIR$/app/Dates.php" />
         <option value="$PROJECT_DIR$/public/css/calendar_style.css" />
         <option value="$PROJECT_DIR$/resources/views/calendar/date.blade.php" />
-        <option value="$PROJECT_DIR$/app/Calendar.php" />
-        <option value="$PROJECT_DIR$/app/Calendar/Dates.php" />
         <option value="$PROJECT_DIR$/app/Calendar/Month.php" />
+        <option value="$PROJECT_DIR$/app/Calendar/Dates.php" />
+        <option value="$PROJECT_DIR$/app/Calendar.php" />
       </list>
     </option>
   </component>
@@ -351,7 +350,7 @@
       <workItem from="1548157137840" duration="1851000" />
       <workItem from="1548273139128" duration="856000" />
       <workItem from="1548274146564" duration="22000" />
-      <workItem from="1548750836506" duration="2771000" />
+      <workItem from="1548750836506" duration="2438000" />
     </task>
     <task id="LOCAL-00001" summary="outstanding changes">
       <created>1548080664532</created>
@@ -409,25 +408,11 @@
       <option name="project" value="LOCAL" />
       <updated>1548753268075</updated>
     </task>
-    <task id="LOCAL-00009" summary="Dates does not need days anymore">
-      <created>1548753287634</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1548753287634</updated>
-    </task>
-    <task id="LOCAL-00010" summary="fix little bug">
-      <created>1548753320407</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1548753320407</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12114000" />
+    <option name="totallyTimeSpent" value="11781000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
@@ -467,9 +452,7 @@
     <MESSAGE value="delete old calendar view" />
     <MESSAGE value="use weekday number instead of translated weekday shorthand" />
     <MESSAGE value="Month already know days" />
-    <MESSAGE value="Dates does not need days anymore" />
-    <MESSAGE value="fix little bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix little bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Month already know days" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -576,6 +559,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Calendar/Month.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Calendar/Dates.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Calendar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
@@ -583,20 +580,6 @@
           <folding>
             <element signature="e#23#46#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Calendar/Month.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Calendar/Dates.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
         </state>
       </provider>
     </entry>

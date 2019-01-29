@@ -26,8 +26,8 @@ class Dates implements \Iterator {
      */
     public function current()
     {
-        $monthDay = $this->month->calculateMonthDay($this->day);
-        if ($this->month->beforeStartOfMonth($this->day)) {
+        $monthDay = $this->day - $this->offsetAtStart + 1;
+        if ($this->day < $this->offsetAtStart) {
             return 'empty';
         } elseif ($this->month->beyondEndOfMonth($monthDay)) {
             return 'empty';
