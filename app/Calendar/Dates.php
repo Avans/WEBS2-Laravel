@@ -4,18 +4,12 @@ namespace App\Calendar;
 class Dates implements \Iterator {
 
     private $month;
-
-    private $offsetAtStart;
-
     private $day;
-    private $totalDays;
 
     public function __construct(Month $month)
     {
         $this->month = $month;
-        $this->offsetAtStart = $month->calculateOffsetAtStart();
         $this->rewind();
-        $this->totalDays = $month->calculateTotalDays();
     }
 
     /**
@@ -26,16 +20,15 @@ class Dates implements \Iterator {
      */
     public function current()
     {
-        $monthDay = $this->month->calculateMonthDay($this->day);
         if ($this->month->beforeStartOfMonth($this->day)) {
             return 'empty';
-        } elseif ($this->month->beyondEndOfMonth($monthDay)) {
+        } elseif ($this->month->beyondEndOfMonth($this->day)) {
             return 'empty';
         } else {
             return [
                 'weekday' => $this->month->calculateWeekday($this->day),
-                'monthday' =>  $monthDay,
-                'events' => $this->month->events($monthDay)
+                'monthday' =>  $this->month->calculateMonthDay($this->day),
+                'events' => $this->month->events($this->day)
             ];
         }
     }
@@ -64,7 +57,7 @@ class Dates implements \Iterator {
 
     public function valid()
     {
-        return $this->day < $this->totalDays;
+        return $this->month->isMonthDay($this->day);
     }
 
     /**
