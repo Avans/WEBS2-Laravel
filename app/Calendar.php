@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Calendar\Dates;
+use App\Calendar\MonthIterator;
 use App\Calendar\Month;
 
 class Calendar
@@ -32,6 +32,6 @@ class Calendar
     }
 
     public function dates() {
-        return new Dates($this->month);
+        return new MonthIterator($this->month);
     }
 }

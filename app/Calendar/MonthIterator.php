@@ -1,7 +1,7 @@
 <?php
 namespace App\Calendar;
 
-class Dates implements \Iterator {
+class MonthIterator implements \Iterator {
 
     private $month;
     private $day;
