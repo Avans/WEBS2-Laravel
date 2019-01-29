@@ -16,14 +16,9 @@ class Month
         $this->days = $days;
     }
 
-    public function calculateNumberOfWeeks($days)
+    public function calculateOffsetAtStart()
     {
-        return round(($this->calculateOffsetAtStart($days) + $this->date->format("t")) / count($days));
-    }
-
-    public function calculateOffsetAtStart($days)
-    {
-        return array_search($this->date->format("D"), $days);
+        return array_search($this->date->format("D"), $this->days);
     }
 
     public function beyondEndOfMonth($day_count)
@@ -58,5 +53,15 @@ class Month
     public function calculateWeekday($day)
     {
         return $day % count($this->days);
+    }
+
+    public function calculateTotalDays()
+    {
+        return (count($this->days) * $this->calculateNumberOfWeeks());
+    }
+
+    private function calculateNumberOfWeeks($days)
+    {
+        return round(($this->calculateOffsetAtStart($days) + $this->date->format("t")) / count($days));
     }
 }
