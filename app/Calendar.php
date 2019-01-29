@@ -8,12 +8,10 @@ use App\Calendar\Month;
 class Calendar
 {
     private $month;
-    private $days;
 
-    public function __construct(\DateTime $date, $days)
+    public function __construct(Month $month)
     {
-        $this->month = new Month($date, $days);
-        $this->days = $days;
+        $this->month = $month;
     }
 
     public function shiftMonth()
