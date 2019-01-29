@@ -48,7 +48,6 @@ class Dates implements \Iterator {
                     }
                 }, $this->days[$this->currentEntry % count($this->days)]),
                 'monthday' =>  $day_count,
-                'events' => $this->month->events($day_count)
             ];
         }
     }
