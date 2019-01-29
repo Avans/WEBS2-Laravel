@@ -12,7 +12,7 @@ class Month
 
     public function __construct(\DateTime $date, array $days)
     {
-        $this->date = clone $date;
+        $this->date = $date;
         $this->days = $days;
     }
 
@@ -37,12 +37,17 @@ class Month
 
     public function next()
     {
-        return new self($this->date->add(new \DateInterval('P1M')), $this->days);
+        $date = clone $this->date;
+        return new self($date->add(new \DateInterval('P1M')), $this->days);
     }
 
     public function getID()
     {
         return $this->date->format("Y-n");
+    }
+
+    public function weekdays() {
+        return $this->days;
     }
 
     public function dates() {
