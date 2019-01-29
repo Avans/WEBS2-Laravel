@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Calendar\Dates;
+use App\Calendar\Month;
+
 class Calendar
 {
     private $month;
