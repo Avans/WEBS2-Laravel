@@ -8,14 +8,14 @@ class Dates implements \Iterator {
     private $offsetAtStart;
 
     private $day;
-    private $totalDays;
+    private $totalEntries;
 
-    public function __construct(Month $month)
+    public function __construct(Month $month, $days)
     {
         $this->month = $month;
-        $this->offsetAtStart = $month->calculateOffsetAtStart();
+        $this->offsetAtStart = $month->calculateOffsetAtStart($days);
         $this->rewind();
-        $this->totalDays = $month->calculateTotalDays();
+        $this->totalEntries = (count($days) * $month->calculateNumberOfWeeks($days));
     }
 
     /**
@@ -64,7 +64,7 @@ class Dates implements \Iterator {
 
     public function valid()
     {
-        return $this->day < $this->totalDays;
+        return $this->day < $this->totalEntries;
     }
 
     /**
