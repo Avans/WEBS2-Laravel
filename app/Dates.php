@@ -1,5 +1,5 @@
 <?php
-namespace App\Calendar;
+namespace App;
 
 class Dates implements \Iterator {
 
