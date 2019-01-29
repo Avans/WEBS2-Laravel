@@ -42,4 +42,13 @@ class Month
     {
         return $this->date->format("Y-n");
     }
+
+    public function events($day_count)
+    {
+        return \App\Event::query()
+            ->whereDate('start', '=', $this->date->format("Y-m-$day_count"))
+            ->whereDate('end', '=', $this->date->format("Y-m-$day_count"))
+            ->orWhereRaw('? BETWEEN start AND end', [$this->date->format("Y-m-$day_count")])
+            ->get();
+    }
 }
