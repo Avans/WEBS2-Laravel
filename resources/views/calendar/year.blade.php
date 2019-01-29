@@ -2,8 +2,7 @@
 
 @section('content')
 
-@for ($i = 0; $i < 12; $i++)
+@foreach ($month->range(12) as $month)
     @include('calendar.dates')
-{{ $calendar->shiftMonth() }}
-@endfor
+@endforeach
 @endsection

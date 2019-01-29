@@ -1,12 +1,12 @@
 <table class="calendar">
-    <tr><td colspan="{{ count($days) }}" id="calendar_month"><a href="/calendar/month/{{ $calendar->getMonthID() }}">{{ $calendar->renderMonthName() }}</a></td></tr>
+    <tr><td colspan="{{ count($days) }}" id="calendar_month"><a href="/calendar/month/{{ $month->getID() }}">{{ $month->formatLabel() }}</a></td></tr>
     <tr>
         @foreach ($days as $day)
             <th>{{ $day }}</th>
         @endforeach
     </tr>
     <tr>
-        @foreach ($calendar->dates() as $date)
+        @foreach ($month->dates() as $date)
             @if ($date->isEmpty())
                 @include('calendar.emptyday')
             @else

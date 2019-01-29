@@ -45,6 +45,18 @@ class Month
         return $this->date->format("Y-n");
     }
 
+    public function dates() {
+        return new MonthIterator($this);
+    }
+
+    public function range(int $count) {
+        $range = [$this];
+        for ($i = 1; $i < $count; $i++) {
+            $range[] = $range[$i - 1]->next();
+        }
+        return $range;
+    }
+
     public function events($day)
     {
         $date = $this->date->format("Y-m-") . $this->calculateMonthDay($day);

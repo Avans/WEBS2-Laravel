@@ -28,8 +28,4 @@ class Calendar
     {
         return $this->month->getID();
     }
-
-    public function dates() {
-        return new MonthIterator($this->month);
-    }
 }
