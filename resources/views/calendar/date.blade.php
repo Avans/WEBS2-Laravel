@@ -1,6 +1,6 @@
-<td class="calendar_entry wd{{ strtolower($weekday) }}_entry">
-    <div class="entry_date">{{ $monthday }}</div>
-    @foreach($events as $event)
+<td class="calendar_entry wd{{ $date->weekday() }}_entry">
+    <div class="entry_date">{{ $date->monthday() }}</div>
+    @foreach($date->events() as $event)
         <div class="entry_line">{{ str_limit($event->summary, 5, '...') }}</div>
     @endforeach
 

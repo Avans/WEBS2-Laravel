@@ -25,11 +25,13 @@ class MonthDay
         return $this->month->beforeStartOfMonth($this->day) || $this->month->beyondEndOfMonth($this->day);
     }
 
-    public function data() {
-        return [
-            'weekday' => $this->month->calculateWeekday($this->day),
-            'monthday' =>  $this->month->calculateMonthDay($this->day),
-            'events' => $this->month->events($this->day)
-        ];
+    public function weekday() {
+        return $this->month->calculateWeekday($this->day);
+    }
+    public function monthday() {
+        return $this->month->calculateMonthDay($this->day);
+    }
+    public function events() {
+        return $this->month->events($this->day);
     }
 }

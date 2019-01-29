@@ -10,11 +10,10 @@
             @if ($date->isEmpty())
                 @include('calendar.emptyday')
             @else
-                @php ($curdate = $date->data())
-                @if ($curdate['weekday'] == 0)
+                @if ($date->weekday() == 0)
     </tr><tr>
                 @endif
-                @include('calendar.date', $curdate)
+                @include('calendar.date', ['date' => $date])
         @endif
 @endforeach
 </tr>
