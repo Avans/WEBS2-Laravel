@@ -14,7 +14,7 @@ class MonthIterator implements \Iterator {
 
     public function current() : MonthDay
     {
-        return $this->month->makeDay($this->day);
+        return new MonthDay($this->day, $this->month);
     }
 
     public function next()

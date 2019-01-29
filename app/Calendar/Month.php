@@ -91,10 +91,4 @@ class Month
     {
         return $day - $this->calculateOffsetAtStart($this->days) + 1;
     }
-
-    public function makeDay($day) : MonthDay
-    {
-        return new MonthDay($day, $this);
-    }
-
 }
