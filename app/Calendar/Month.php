@@ -7,25 +7,27 @@ namespace App\Calendar;
 class Month
 {
     private $date;
+    private $days;
 
-    public function __construct(\DateTime $date)
+
+    public function __construct(\DateTime $date, array $days)
     {
         $this->date = clone $date;
+        $this->days = $days;
     }
 
-    public function calculateNumberOfWeeks($days)
+    public function calculateOffsetAtStart()
     {
-        return round(($this->calculateOffsetAtStart($days) + $this->date->format("t")) / count($days));
+        return array_search($this->date->format("D"), $this->days);
     }
 
-    public function calculateOffsetAtStart($days)
+    public function beforeStartOfMonth($day)
     {
-        return array_search($this->date->format("D"), $days);
+        return $day < $this->calculateOffsetAtStart($this->days);
     }
-
-    public function beyondEndOfMonth($day_count)
+    public function beyondEndOfMonth($day)
     {
-        return $day_count > $this->date->format("t");
+        return $this->calculateMonthDay($day) > $this->date->format("t");
     }
 
     public function formatLabel()
@@ -35,11 +37,47 @@ class Month
 
     public function next()
     {
-        return new self($this->date->add(new \DateInterval('P1M')));
+        return new self($this->date->add(new \DateInterval('P1M')), $this->days);
     }
 
     public function getID()
     {
         return $this->date->format("Y-n");
     }
+
+    public function events($day)
+    {
+        $date = $this->date->format("Y-m-") . $this->calculateMonthDay($day);
+        return \App\Event::query()
+            ->whereDate('start', '=', $date)
+            ->whereDate('end', '=', $date)
+            ->orWhereRaw('? BETWEEN start AND end', [$date])
+            ->get();
+    }
+
+    public function calculateWeekday($day)
+    {
+        return $day % count($this->days);
+    }
+
+    public function calculateTotalDays()
+    {
+        return (count($this->days) * $this->calculateNumberOfWeeks());
+    }
+
+    private function calculateNumberOfWeeks()
+    {
+        return round(($this->calculateOffsetAtStart($this->days) + $this->date->format("t")) / count($this->days));
+    }
+
+    public function calculateMonthDay($day)
+    {
+        return $day - $this->calculateOffsetAtStart($this->days) + 1;
+    }
+
+    public function isMonthDay($day)
+    {
+        return $day < $this->calculateTotalDays();
+    }
+
 }

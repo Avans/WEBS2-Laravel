@@ -1,6 +1,9 @@
 <?php
 
-namespace App\Calendar;
+namespace App;
+
+use App\Calendar\Dates;
+use App\Calendar\Month;
 
 class Calendar
 {
@@ -9,7 +12,7 @@ class Calendar
 
     public function __construct(\DateTime $date, $days)
     {
-        $this->month = new Month($date);
+        $this->month = new Month($date, $days);
         $this->days = $days;
     }
 
@@ -29,6 +32,6 @@ class Calendar
     }
 
     public function dates() {
-        return new Dates($this->month, $this->days);
+        return new Dates($this->month);
     }
 }
