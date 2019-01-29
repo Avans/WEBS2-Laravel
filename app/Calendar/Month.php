@@ -21,13 +21,9 @@ class Month
         return array_search($this->date->format("D"), $this->days);
     }
 
-    public function beforeStartOfMonth($day)
+    public function beyondEndOfMonth($monthDay)
     {
-        return $day < $this->calculateOffsetAtStart($this->days);
-    }
-    public function beyondEndOfMonth($day)
-    {
-        return $this->calculateMonthDay($day) > $this->date->format("t");
+        return $monthDay > $this->date->format("t");
     }
 
     public function formatLabel()
@@ -62,9 +58,9 @@ class Month
         return $range;
     }
 
-    public function events($day)
+    public function events($monthDay)
     {
-        $date = $this->date->format("Y-m-") . $this->calculateMonthDay($day);
+        $date = $this->date->format("Y-m-") . $monthDay;
         return \App\Event::query()
             ->whereDate('start', '=', $date)
             ->whereDate('end', '=', $date)
@@ -85,10 +81,5 @@ class Month
     private function calculateNumberOfWeeks()
     {
         return round(($this->calculateOffsetAtStart($this->days) + $this->date->format("t")) / count($this->days));
-    }
-
-    public function calculateMonthDay($day)
-    {
-        return $day - $this->calculateOffsetAtStart($this->days) + 1;
     }
 }

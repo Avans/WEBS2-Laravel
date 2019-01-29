@@ -8,6 +8,7 @@ class MonthDay
 {
     private $day;
     private $month;
+    private $monthDay;
 
     /**
      * MonthDay constructor.
@@ -18,20 +19,21 @@ class MonthDay
     {
         $this->day = $day;
         $this->month = $month;
+        $this->monthDay = $this->day - $this->month->calculateOffsetAtStart() + 1;
     }
 
     public function isEmpty()
     {
-        return $this->month->beforeStartOfMonth($this->day) || $this->month->beyondEndOfMonth($this->day);
+        return ($this->day < $this->month->calculateOffsetAtStart()) || ($this->month->beyondEndOfMonth($this->monthDay));
     }
 
     public function weekday() {
         return $this->month->calculateWeekday($this->day);
     }
     public function monthday() {
-        return $this->month->calculateMonthDay($this->day);
+        return $this->monthDay;
     }
     public function events() {
-        return $this->month->events($this->day);
+        return $this->month->events($this->monthDay);
     }
 }
