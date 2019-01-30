@@ -37,9 +37,15 @@ class Month
         return new self($date->add(new \DateInterval('P1M')), $this->days);
     }
 
+
+    public function getYear()
+    {
+        return $this->date->format("Y");
+    }
+
     public function getID()
     {
-        return $this->date->format("Y-n");
+        return $this->date->format("n");
     }
 
     public function weekdays() {
