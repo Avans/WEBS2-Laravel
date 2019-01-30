@@ -19,7 +19,12 @@ class MonthDay
     {
         $this->day = $day;
         $this->month = $month;
-        $this->monthDay = $this->day - $this->month->calculateOffsetAtStart() + 1;
+        $this->monthDay = $this->day;
+    }
+
+    public static function make($day, Month $month)
+    {
+        return new self($day, $month);
     }
 
     public function isEmpty()
@@ -35,5 +40,8 @@ class MonthDay
     }
     public function events() {
         return $this->month->events($this->monthDay);
+    }
+    public function path() {
+        return $this->month->getYear() . '/' . $this->month->getID() . '/' . $this->monthDay;
     }
 }

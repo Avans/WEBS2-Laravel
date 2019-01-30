@@ -14,8 +14,9 @@
 Route::get('/', 'RootController@show');
 
 Route::group(["prefix" => "calendar"], function() {
-    Route::redirect('/', 'year');
-    Route::get('/year/{year?}', 'CalendarController@showYear');
-    Route::get('/month/{id}', 'CalendarController@showMonth');
+    Route::redirect('/', '/year');
+    Route::get('/{year}/{month}/{day}', 'CalendarController@showDay');
+    Route::get('/{year}/{month}', 'CalendarController@showMonth');
+    Route::get('/{year?}', 'CalendarController@showYear');
 });
 

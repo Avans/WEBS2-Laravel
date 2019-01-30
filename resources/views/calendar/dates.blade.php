@@ -1,5 +1,5 @@
 <table class="calendar">
-    <tr><td colspan="{{ count($month->weekdays()) }}" id="calendar_month"><a href="/calendar/month/{{ $month->getID() }}">{{ $month->formatLabel() }}</a></td></tr>
+    <tr><td colspan="{{ count($month->weekdays()) }}" id="calendar_month"><a href="/calendar/{{$month->getYear()}}/{{ $month->getID() }}">{{ $month->formatLabel() }}</a></td></tr>
     <tr>
         @foreach ($month->weekdays() as $weekday)
             <th>{{ $weekday }}</th>

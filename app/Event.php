@@ -9,15 +9,15 @@ class Event extends Model
 
     public function chairman()
     {
-        return $this->hasOne('App\Person');
+        return $this->belongsTo('App\Person');
     }
     public function required()
     {
-        return $this->belongsToMany('App\Person');
+        return $this->belongsToMany('App\Person')->where('required', true);
     }
     public function optional()
     {
-        return $this->belongsToMany('App\Person');
+        return $this->belongsToMany('App\Person')->where('required', false);
     }
 
     public function resources()
