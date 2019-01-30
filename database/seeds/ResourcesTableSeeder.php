@@ -11,7 +11,7 @@ class ResourcesTableSeeder extends Seeder
      */
     public function run()
     {
-        \Illuminate\Support\Facades\DB::table('people')->truncate();
+        \Illuminate\Support\Facades\DB::table('resources')->truncate();
 
         DB::table('resources')->insert([
             'name' => 'OB107',
