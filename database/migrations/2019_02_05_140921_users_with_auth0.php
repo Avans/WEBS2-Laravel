@@ -15,6 +15,7 @@ class UsersWithAuth0 extends Migration
     {
         Schema::table('users', function(Blueprint $table) {
             $table->string('sub')->after('name')->nullable(true)->unique();
+            //$table->dropColumn('password');
         });
     }
 
@@ -27,6 +28,8 @@ class UsersWithAuth0 extends Migration
     {
         Schema::table('users', function(Blueprint $table) {
             $table->dropColumn('sub');
+            $table->dropIndex('users_sub_unique');
+            $table->string('password');
         });
     }
 }

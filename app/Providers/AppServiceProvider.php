@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Auth0\Login\Contract\Auth0UserRepository as Auth0Contract;
-use Auth0\Login\Repository\Auth0UserRepository as UserRepo;
+use \App\Repositories\CustomUserRepository as UserRepo;
 
 class AppServiceProvider extends ServiceProvider
 {
