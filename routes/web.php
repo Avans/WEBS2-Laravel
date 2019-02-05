@@ -13,6 +13,8 @@
 
 Route::get('/', 'RootController@show');
 
+Route::get( '/auth0/callback', '\Auth0\Login\Auth0Controller@callback' )->name( 'auth0-callback' );
+
 Route::group(["prefix" => "calendar"], function() {
     Route::redirect('/', '/year');
     Route::get('/{year}/{month}/{day}', 'CalendarController@showDay');
