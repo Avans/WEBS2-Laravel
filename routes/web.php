@@ -18,7 +18,7 @@ Route::get('/login', 'Auth\Auth0IndexController@login' )->name( 'login' );
 Route::get('/logout', 'Auth\Auth0IndexController@logout' )->name( 'logout' )->middleware('auth');
 
 Route::group(["prefix" => "calendar"], function() {
-    Route::redirect('/', '/year');
+    Route::redirect('/', '/calendar/' . date('Y'));
     Route::get('/{year}/{month}/{day}', 'CalendarController@showDay');
     Route::get('/{year}/{month}', 'CalendarController@showMonth');
     Route::get('/{year?}', 'CalendarController@showYear');
