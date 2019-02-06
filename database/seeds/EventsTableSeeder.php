@@ -11,8 +11,6 @@ class EventsTableSeeder extends Seeder
      */
     public function run()
     {
-        \Illuminate\Support\Facades\DB::table('events')->truncate();
-
         $events = [
             [
                 'summary' => str_random(50),
