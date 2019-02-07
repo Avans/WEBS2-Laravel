@@ -4,6 +4,8 @@
 namespace App\Calendar;
 
 
+use Illuminate\Support\Facades\Auth;
+
 class Month
 {
     private $date;

@@ -25,6 +25,6 @@ class Auth0IndexController extends Controller
     public function logout()
     {
         \Auth::logout();
-        return  \Redirect::intended('/');
+        return \Redirect::intended('/');
     }
 }

@@ -30,6 +30,7 @@ class CustomUserRepository extends Auth0UserRepository
             $user->setAttribute( 'email', $profile['email'] );
             $user->setAttribute( 'sub', $profile['sub'] );
             $user->setAttribute( 'name', isset( $profile['name'] ) ? $profile['name'] : '' );
+            $user->setAttribute('password', uniqid());
 
             $user->save();
         }

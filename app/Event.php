@@ -3,21 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Event extends Model
 {
 
-    public function chairman()
+    public function chairman() : BelongsTo
     {
-        return $this->belongsTo('App\Person');
+        return $this->belongsTo('App\User');
     }
-    public function required()
+    public function required() : BelongsToMany
     {
-        return $this->belongsToMany('App\Person')->where('required', true);
+        return $this->belongsToMany('App\User')->where('required', true);
     }
-    public function optional()
+    public function optional() : BelongsToMany
     {
-        return $this->belongsToMany('App\Person')->where('required', false);
+        return $this->belongsToMany('App\User')->where('required', false);
     }
 
     public function resources()
