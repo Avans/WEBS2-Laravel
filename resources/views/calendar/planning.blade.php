@@ -3,22 +3,22 @@
 @foreach($date->events() as $event)
     @can('view', $event)
         <h2>{{ $event->summary }}</h2>
-        <p>Chairman: {{$event->chairman?$event->chairman->name:'<none>'}}</p>
-        Attendees
+        <p>{{trans_choice("calendar.chairman", $event->chairman?1:0, ['name' => $event->chairman->name]) }}</p>
+        {{trans_choice("calendar.attendees", $event->required->count()+$event->optional->count()) }}
         <ul>
             @foreach ($event->required as $person)
-                <li>{{$person->name}} (required)</li>
+                <li>{{$person->name}} ({{__("calendar.required")}})</li>
             @endforeach
             @foreach ($event->optional as $person)
                 <li>{{$person->name}}</li>
             @endforeach
         </ul>
-        Resources
+        {{__("calendar.resources") }}
         <ul>
             @forelse ($event->resources as $resource)
                 <li>{{$resource->name}} ({{$resource->type}})</li>
             @empty
-                <li>no resources</li>
+                <li>{{__("calendar.noresources") }}</li>
             @endforelse
         </ul>
     @endcan

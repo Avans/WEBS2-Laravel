@@ -30,7 +30,7 @@ class Month
 
     public function formatLabel()
     {
-        return __($this->date->format("F")) . ' ' . $this->date->format("Y");
+        return __('calendar.'.$this->date->format("F")) . ' ' . $this->date->format("Y");
     }
 
     public function next()

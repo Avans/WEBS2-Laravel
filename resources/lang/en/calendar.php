@@ -1,0 +1,27 @@
+<?php return [
+  "Mon" => "ma",
+  "Tue" => "di",
+  "Wed" => "woe",
+  "Thu" => "do",
+  "Fri" => "vr",
+  "Sat" => "za",
+  "Sun" => "zo",
+  "January"  => "januari",
+  "February"  => "februari",
+  "March"  => "maart",
+  "April"  => "april",
+  "May"  => "mei",
+  "June"  => "juni",
+  "July"  => "juli",
+  "August"  => "augustus",
+  "September"  => "september",
+  "October"  => "oktober",
+  "November"  => "november",
+  "December"  => "december",
+
+    "chairman"  => "{0}No chairman|[1]Chairman: :name",
+  "attendees"  => "{0}No attendees|[1]One attendee|[2,*] :count attendees",
+  "required"  => "required",
+  "resources"  => "Resources",
+  "noresources"  => "no resources"
+];
